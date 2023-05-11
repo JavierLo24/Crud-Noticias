@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Crear/Editar Noticia</title>
+</head>
+<body>
+    <h1>Crear/Editar Noticia</h1>
+    <form th:action="@{/newsview}" method="post" th:object="${news}">
+        <input type="hidden" th:field="*{id}">
+        <label for="titulo">Titulo:</label>
+        <input type="text" th:field="*{titulo}">
+        <br>
+        <label for="desarrollo">Desarrollo:</label>
+        <input type="text" th:field="*{desarrollo}">
+        <br>
+        <label for="fecha">Fecha:</label>
+        <input type="date" th:field="*{fecha}">
+        <br>
+        <label for="categoria">Categoria:</label>
+        <select name="categoria">
+        	<option th:each="categoria: ${categorias}" th:text="${categoria.descripcion}" th:value="${categoria.id}"></option>
+        </select>
+        <br>
+        <label for="url">URL:</label>
+        <input type="text" th:field="*{url}">
+        <br>
+        <label for="resumen">Resumen:</label>
+        <input type="text" th:field="*{resumen}">
+        <br>
+        <button type="submit">Guardar</button>
+        <a th:href="@{/newsview/listar}">Cancelar</a>
+    </form>
+</body>
+</html>

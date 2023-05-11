@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Prueba hoja tomillo con noticias</title>
+</head>
+<body>
+<h1>Listado Noticias</h1>
+
+<table>
+<thead>
+<tr>
+<td>Id</td>
+<td>Titulo</td>
+<td>Desarrollo</td>
+<td>Fecha</td>
+<td>Categoria</td>
+<td>URL</td>
+<td>Resumen</td>
+<td>Acciones</td>
+</tr>
+</thead>
+<tbody>
+<tr th:each="noticia: ${news}">
+<td th:text="${noticia.id}"></td>
+<td th:text="${noticia.titulo}"></td>
+<td th:text="${noticia.desarrollo}"></td>
+<td th:text="${noticia.fecha}"></td>
+<td th:text="${noticia.categoria}"></td>
+<td th:text="${noticia.url}"></td>
+<td th:text="${noticia.resumen}"></td>
+<td><a th:href="@{/newsview/{id}/edit(id=${noticia.id})}">Editar</a></td>
+<td><a th:href="@{/newsview/{id}/delete(id=${noticia.id})}">Eliminar</a></td>			
+</tr>
+</tbody>
+</table>
+<br>
+<a th:href="@{/newsview/new}">Nueva Noticia</a>
+</body>
+</html>
